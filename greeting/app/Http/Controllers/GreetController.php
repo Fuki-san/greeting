@@ -22,10 +22,12 @@ class GreetController extends Controller
             $greetword = 'おやすみ';
             $time = '夜';
         }
-        return view('/greet', [
+        $fromGreet = 'のあいさつ';
+        return view('greet', [
             'greetword' => $greetword,
             'time' => $time,
-            'displaymode' => 'greet'
+            'displaymode' => 'greet',
+            'fromGreet' => $fromGreet
         ]);
         //
     }
@@ -41,9 +43,11 @@ class GreetController extends Controller
         } else if ($word == 'しょう') {
             $word = 'しょう';
         }
-        return view('/greet', [
+        $freeMsg = '自由なメッセージ';
+        return view('greet', [
             'word' => $word,
-            'displaymode' => 'wording'
+            'displaymode' => 'wording',
+            'freeMsg' => $freeMsg
         ]);
     }
 
@@ -52,10 +56,12 @@ class GreetController extends Controller
         $greets = ['おはよう', 'こんにちは', 'こんばんは', 'おやすみ'];
         $greets_key = array_rand($greets, 1);
         $result = $greets[$greets_key];
-
-        return view('/greet', [
+        
+        $randomMsg = 'ランダムなメッセージ';
+        return view('greet', [
             'displaymode' => 'random',
-            'result' => $result
+            'result' => $result,
+            'randomMsg' => $randomMsg
         ]);
     }
 }
